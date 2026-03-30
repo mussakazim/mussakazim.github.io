@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Muhammad Mussa Kazim</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #1e3a8a;
+  --accent: #2563eb;
+  --text: #1f2937;
+  --muted: #2e3034;
+  --card: #ffffff;
+}
+
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--primary);
+}
+
+/* ICONS */
+.top-icons {
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  padding-top:25px;
+}
+
+.top-icons a {
+  width:45px;
+  height:45px;
+  background:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.3s;
+}
+
+.top-icons a:hover {
+  transform:translateY(-3px);
+}
+
+.top-icons img { width:20px; }
+
+/* CARD */
+.container {
+  max-width:900px;
+  margin:120px auto 50px;
+  background:white;
+  border-radius:20px;
+  padding:90px 40px 40px;
+  position:relative;
+  box-shadow:0 25px 60px rgba(0,0,0,0.2);
+}
+
+/* PROFILE */
+.profile-pic {
+  position: absolute;
+  top: -75px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  width: 150px;
+  height: 150px;
+
+  border-radius: 50%;
+  border: 6px solid white;
+  overflow: hidden; /* 🔥 THIS FIXES EVERYTHING */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eee;
+}
+.profile-pic img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+/* HEADER */
+h1 {
+  text-align:center;
+  font-family:'Lora';
+  letter-spacing:2px;
+  margin-bottom:10px;
+}
+
+.subtitle {
+  text-align:center;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+
+.contact {
+  text-align:center;
+  color:var(--muted);
+  margin-bottom:40px;
+}
+
+/* SECTION */
+.section {
+  margin-bottom:35px;
+}
+
+.section h2 {
+  font-family:'Lora';
+  margin-bottom:12px;
+  border-left:5px solid var(--accent);
+  padding-left:10px;
+}
+
+/* TEXT */
+p {
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.item {
+  margin-bottom:15px;
+}
+
+.item-title {
+  font-weight:600;
+}
+
+.item-sub {
+  color:var(--accent);
+  font-size:0.9rem;
+}
+
+.item-desc {
+  color:var(--muted);
+  font-size:0.95rem;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .container {
+    padding:90px 20px 30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ICONS -->
+<div class="top-icons">
+  <a href="mailto:mmussakazim@gmail.com">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg">
+  </a>
+  <a href="https://linkedin.com/in/mmussakazim" target="_blank">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg">
+  </a>
+  <a href="https://github.com/mussakazim" target="_blank">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
+  </a>
+</div>
+
+<div class="container">
+
+<div class="profile-pic">
+  <img src="me.jpg" alt="Profile Picture">
+</div>
+
+<h1>MUHAMMAD MUSSA KAZIM</h1>
+<div class="subtitle">• AI • MACHINE LEARNING • COMPUTER ENGINEERING</div>
+
+<div class="contact">
+<p>mmussakazim@gmail.com</p> <p>+92 309 5364941</p>
+</div>
+
+<!-- ABOUT -->
+<div class="section">
+<h2>About Me</h2>
+<p>
+Computer Engineering student with strong coding skills and a solid foundation in Machine Learning, Deep Learning, and Image & Signal Processing. Passionate about leveraging AI to solve real-world challenges and contribute to impactful research and development.
+</p>
+</div>
+
+<!-- EDUCATION -->
+<div class="section">
+<h2>Education</h2>
+<div class="item">
+<div class="item-title">B.E Computer Engineering</div>
+<div class="item-sub">National University of Sciences and Technology (NUST)</div>
+<div class="item-desc"> <p>2022 – Present</p> <p>CGPA: 3.97 / 4.00</p></div>
+</div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section">
+<h2>Research & Experience</h2>
+
+<div class="item">
+<div class="item-title">Mitacs Globalink Research Intern (GRI '26)</div>
+<div class="item-sub">York University, Canada</div>
+<div class="item-desc">Selected as a Mitacs Globalink Research Intern at York University, Canada, under Professor Ping Wang. Conducting research on “Incorporating AI for Next Generation Communication Networks”. Selected through a highly competitive international research program.</div>
+</div>
+
+<div class="item">
+<div class="item-title">Research Intern</div>
+<div class="item-sub">NUST × Ulster University (UK)</div>
+<div class="item-desc">Conducted research on symbol detection for MIMO systems using AI-based techniques. Writing a paper titled “A Data-Driven Approach to Pilot-Free MIMO Detection Using Transformer-Based Architecture” targeted for conferences.</div>
+</div>
+
+<div class="item">
+<div class="item-title">Machine Learning Intern</div>
+<div class="item-sub">RISETech</div>
+<div class="item-desc">Worked on computer vision projects involving YOLO and RT-DETR models for object detection and image analysis. Explored self-supervised learning techniques with autoencoders and gained hands-on experience with CNN and transformer-based classification approaches.</div>
+</div>
+
+<div class="item">
+<div class="item-title">Research Intern — ML & Quantum Computing</div>
+<div class="item-sub">CETQAP</div>
+<div class="item-desc">Reviewed research papers on the intersection of machine learning and quantum computing, culminating in a review paper titled “The Role of Quantum Computing in Accelerating Machine Learning Algorithms.” </div>
+</div>
+
+<div class="item">
+<div class="item-title">Research Intern — Hardware Security</div>
+<div class="item-sub">WISE Lab NUST</div>
+<div class="item-desc">Worked on various logic locking techniques and attacks, with a focus on analyzing machine learning based attacks such as GNNUnlock. </div>
+</div>
+
+</div>
+
+<!-- PROJECTS -->
+<div class="section">
+<h2>Projects</h2>
+
+<div class="item">
+<div class="item-title">NeuroMind (FYP)</div>
+<div class="item-desc">Developing a solution to classify Dravet Syndrome using EEG data and machine learning techniques to support accurate and early diagnosis. The project also aims to recommend the most effective treatment based on past researches through a RAG-based model. We are also incorporating Autoencoder based models for improving interpretability of predictions, and enabling patient tracking over time to support continuous and personalized care.</div>
+</div>
+
+<div class="item">
+<div class="item-title">Self-Driving Vision System</div>
+<div class="item-desc">Developed a real-time self-driving solution on Raspberry Pi using classical image processing techniques with lane detection, obstacle-based stop/move decisions, and directional control.</div>
+</div>
+
+<div class="item">
+<div class="item-title">Audio Classification Model</div>
+<div class="item-desc">Preprocessed audio signals in MATLAB and extracted spectrograms and MFCCs to classify noise, speech, and music. Designed and trained a neural network achieving 94% accuracy in audio classification.</div>
+</div>
+
+<div class="item">
+<div class="item-title">Other Projects</div>
+<div class="item-desc">
+  <p>Face Detection Lock System (ESP32-CAM)</p>
+  <p>Mini Search Engine</p>
+  <p>Airport Simulation System (Java)</p>
+  <p>Middle-School Database System</p>
+</div>
+</div>
+
+</div>
+
+<!-- SKILLS -->
+<div class="section">
+<h2>Skills</h2>
+<p>
+<strong>Languages:</strong> Python, Java, C++, MATLAB, Verilog<br>
+<strong>AI/ML:</strong> TensorFlow, PyTorch, Keras, scikit-learn, YOLO<br>
+<strong>Domains:</strong> Computer Vision, Signal Processing, NLP, MIMO Systems<br>
+<strong>Soft Skills:</strong> Problem-solving, teamwork, adaptability
+</p>
+</div>
+
+<!-- CERTIFICATIONS -->
+<div class="section">
+<h2>Certifications</h2>
+<p>Machine Learning Specialization (Stanford & DeepLearning.AI)</p>
+<p>Data Science Methodology (IBM)</p>
+<p>Crash Course on Python (Google)</p>
+</div>
+
+<!-- LEADERSHIP -->
+<div class="section">
+<h2>Leadership & Activities</h2>
+<p>Summer School Instructor Assistant (NUST) </p> 
+<p>Co-Organizer SAT-101 Workshop (NUST)</p>
+<p>Deputy Director Media & Graphics (COMPPEC)</p> 
+<p>Deputy Director Content Writer (NUST Volunteers Club)</p>
+</div>
+
+<!-- EXTRA -->
+<div class="section">
+<h2>Additional Information</h2>
+<p>
+<strong>Languages:</strong> Urdu (Native), English (Fluent)<br>
+<strong>Interests:</strong> YouTube Content Creation, Football, Cricket, History
+</p>
+</div>
+
+</div>
+
+</body>
+</html>
