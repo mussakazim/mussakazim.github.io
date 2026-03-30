@@ -3,308 +3,754 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Muhammad Mussa Kazim</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --primary: #1e3a8a;
-  --accent: #2563eb;
-  --text: #1f2937;
-  --muted: #2e3034;
-  --card: #ffffff;
+  --navy: #0f2456;
+  --navy-mid: #1e3a8a;
+  --blue: #2563eb;
+  --blue-light: #3b82f6;
+  --text: #1a1f2e;
+  --muted: #4b5563;
+  --light: #f0f4ff;
+  --white: #ffffff;
+  --border: rgba(37,99,235,0.15);
 }
 
-/* RESET */
 * { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: var(--primary);
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--text);
+  min-height: 100vh;
 }
 
-/* ICONS */
-.top-icons {
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  padding-top:25px;
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 0%, rgba(37,99,235,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 100%, rgba(59,130,246,0.15) 0%, transparent 60%),
+    var(--navy);
+  z-index:0;
+  pointer-events:none;
 }
 
-.top-icons a {
-  width:45px;
-  height:45px;
-  background:white;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:0.3s;
+/* SOCIAL */
+.social-bar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 28px 0 0;
 }
 
-.top-icons a:hover {
-  transform:translateY(-3px);
-}
-
-.top-icons img { width:20px; }
-
-/* CARD */
-.container {
-  max-width:900px;
-  margin:120px auto 50px;
-  background:white;
-  border-radius:20px;
-  padding:90px 40px 40px;
-  position:relative;
-  box-shadow:0 25px 60px rgba(0,0,0,0.2);
-}
-
-/* PROFILE */
-.profile-pic {
-  position: absolute;
-  top: -75px;
-  left: 50%;
-  transform: translateX(-50%);
-  
-  width: 150px;
-  height: 150px;
-
+.social-bar a {
+  width: 42px;
+  height: 42px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 50%;
-  border: 6px solid white;
-  overflow: hidden; /* 🔥 THIS FIXES EVERYTHING */
-  
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background: #eee;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
 }
-.profile-pic img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
+
+.social-bar a:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.35);
+  transform: translateY(-3px);
+}
+
+.social-bar svg { width: 20px; height: 20px; }
+
+/* PAGE */
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* ── HERO ── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fadeUp 0.65s ease both;
+
+  /* expanded state */
+  padding: 72px 0 62px;
+  transition: padding 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero.compact {
+  padding: 36px 0 28px;
+}
+
+/* Avatar */
+.avatar-ring {
+  width: 184px;
+  height: 184px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--blue-light), #60a5fa, var(--blue));
+  margin-bottom: 34px;
+  flex-shrink: 0;
+  transition:
+    width  0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    margin-bottom 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero.compact .avatar-ring {
+  width: 112px;
+  height: 112px;
+  margin-bottom: 18px;
+}
+
+.avatar-ring img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
   display: block;
+  border: 4px solid var(--navy);
 }
 
-/* HEADER */
-h1 {
-  text-align:center;
-  font-family:'Lora';
-  letter-spacing:2px;
-  margin-bottom:10px;
+/* Name */
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: 1px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  font-size: clamp(2.3rem, 6vw, 3.5rem);
+  transition:
+    font-size 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    margin-bottom 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.subtitle {
-  text-align:center;
-  color:var(--accent);
-  margin-bottom:20px;
+.hero.compact h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin-bottom: 10px;
 }
 
-.contact {
-  text-align:center;
-  color:var(--muted);
-  margin-bottom:40px;
+/* Tags */
+.hero-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 22px;
+  transition: margin-bottom 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* SECTION */
-.section {
-  margin-bottom:35px;
+.hero.compact .hero-tags {
+  margin-bottom: 12px;
 }
 
-.section h2 {
-  font-family:'Lora';
-  margin-bottom:12px;
-  border-left:5px solid var(--accent);
-  padding-left:10px;
+.hero-tags span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  background: rgba(59,130,246,0.12);
+  border: 1px solid rgba(59,130,246,0.3);
+  padding: 5px 14px;
+  border-radius: 100px;
 }
 
-/* TEXT */
-p {
-  color:var(--muted);
-  line-height:1.6;
+/* Contact */
+.hero-contact {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.item {
-  margin-bottom:15px;
+.hero-contact a, .hero-contact span {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.item-title {
-  font-weight:600;
+.hero-contact a:hover { color: rgba(255,255,255,0.9); }
+.hero-contact svg { opacity: 0.7; }
+
+/* MAIN CARD */
+.main {
+  background: rgba(255,255,255,0.97);
+  border-radius: 20px;
+  padding: 50px 48px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
+  opacity: 0;
+  transform: translateY(44px);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.item-sub {
-  color:var(--accent);
-  font-size:0.9rem;
+.main.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.item-desc {
-  color:var(--muted);
-  font-size:0.95rem;
+/* SECTIONS */
+.section { margin-bottom: 44px; }
+.section:last-child { margin-bottom: 0; }
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
 }
+
+.section-label h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 0.3px;
+}
+
+.section-line { flex: 1; height: 1px; background: var(--border); }
+.section-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+
+/* ABOUT */
+.about-text { font-size: 0.97rem; color: var(--muted); line-height: 1.75; }
+
+/* EDUCATION */
+.edu-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: var(--light);
+  border-radius: 12px;
+  padding: 20px 24px;
+  border-left: 3px solid var(--blue);
+  gap: 20px;
+}
+
+.edu-card .degree { font-weight: 600; font-size: 1rem; color: var(--text); margin-bottom: 4px; }
+.edu-card .school { color: var(--blue); font-size: 0.88rem; font-weight: 500; }
+.edu-meta { text-align: right; flex-shrink: 0; }
+.edu-meta .year { font-size: 0.83rem; color: var(--muted); margin-bottom: 4px; }
+
+.cgpa-badge {
+  display: inline-block;
+  background: var(--blue);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+/* EXPERIENCE */
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid var(--border);
+  padding-left: 24px;
+  margin-left: 6px;
+}
+
+.exp-item { position: relative; padding-bottom: 28px; }
+.exp-item:last-child { padding-bottom: 0; }
+
+.exp-item::before {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px var(--blue);
+}
+
+.exp-title { font-weight: 600; font-size: 0.97rem; color: var(--text); margin-bottom: 2px; }
+.exp-org { color: var(--blue); font-size: 0.85rem; font-weight: 500; margin-bottom: 8px; }
+.exp-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+/* PROJECTS */
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.project-card {
+  background: var(--light);
+  border-radius: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.project-card:hover { border-color: var(--blue-light); transform: translateY(-2px); }
+.project-card.wide { grid-column: span 2; }
+
+.project-card .p-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-card .p-title::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--blue);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.project-card .p-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.skill-group { background: var(--light); border-radius: 10px; padding: 16px 18px; }
+
+.skill-group-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+.skill-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.chip {
+  font-size: 0.78rem;
+  color: var(--blue);
+  background: white;
+  border: 1.5px solid rgba(37,99,235,0.45);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+/* CERT CARDS */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--light);
+  border-radius: 14px;
+  padding: 20px 18px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37,99,235,0.06), transparent);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--blue-light);
+  box-shadow: 0 8px 28px rgba(37,99,235,0.15);
+}
+
+.cert-card:hover::after { opacity: 1; }
+.cert-card:active { transform: translateY(-1px); }
+
+.cert-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.cert-issuer {
+  font-size: 0.78rem;
+  color: var(--blue);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.cert-arrow {
+  margin-top: auto;
+  font-size: 0.75rem;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.cert-card:hover .cert-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media(max-width: 680px) {
+  .cert-grid { grid-template-columns: 1fr; }
+}
+
+/* TWO-COL */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.list-card { background: var(--light); border-radius: 12px; padding: 18px 20px; }
+
+.list-card h3 {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+
+.list-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; }
 
 /* MOBILE */
-@media(max-width:768px){
-  .container {
-    padding:90px 20px 30px;
-  }
+@media(max-width: 680px) {
+  .main { padding: 36px 22px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card.wide { grid-column: span 1; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .edu-card { flex-direction: column; }
+  .edu-meta { text-align: left; }
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(28px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* reveal — shows on scroll down, hides on scroll back up */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* stagger children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0s; }
+.reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.08s; }
+.reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:0.16s; }
+.reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:0.24s; }
+.reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:0.32s; }
+
+/* reset stagger children when parent loses visible */
+.reveal-stagger:not(.visible) > * {
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
+  transition-delay: 0s !important;
 }
 </style>
 </head>
-
 <body>
 
-<!-- ICONS -->
-<div class="top-icons">
-  <a href="mailto:mmussakazim@gmail.com">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg">
+<!-- SOCIAL -->
+<div class="social-bar">
+  <a href="mailto:mmussakazim@gmail.com" title="Email">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" width="20" height="20">
   </a>
-  <a href="https://linkedin.com/in/mmussakazim" target="_blank">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg">
+  <a href="https://linkedin.com/in/mmussakazim" target="_blank" title="LinkedIn">
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <rect width="48" height="48" rx="4" fill="#0077B5"/>
+      <path fill="#fff" d="M13 19h5v16h-5zm2.5-7a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM21 19h4.8v2.2h.1c.7-1.2 2.3-2.5 4.8-2.5 5.1 0 6.1 3.4 6.1 7.7V35h-5v-7.7c0-1.8 0-4.2-2.6-4.2s-3 2-3 4.1V35H21z"/>
+    </svg>
   </a>
-  <a href="https://github.com/mussakazim" target="_blank">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
+  <a href="https://github.com/mussakazim" target="_blank" title="GitHub">
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#fff" d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.73 16.33 13.68 18.97.99.18 1.36-.43 1.36-.96 0-.47-.02-2.02-.03-3.67C13.73 39.7 12.59 36.1 12.59 36.1c-.91-2.3-2.22-2.92-2.22-2.92-1.81-1.24.14-1.21.14-1.21 2 .14 3.05 2.05 3.05 2.05 1.78 3.04 4.66 2.16 5.8 1.65.18-1.28.7-2.16 1.27-2.66-4.43-.5-9.09-2.21-9.09-9.86 0-2.18.78-3.96 2.05-5.36-.2-.5-.89-2.53.2-5.28 0 0 1.67-.54 5.48 2.04A19.08 19.08 0 0 1 24 14.38c1.69.01 3.4.23 4.99.67 3.8-2.58 5.47-2.04 5.47-2.04 1.09 2.75.4 4.78.2 5.28 1.28 1.4 2.05 3.18 2.05 5.36 0 7.67-4.67 9.35-9.12 9.84.72.62 1.36 1.84 1.36 3.7 0 2.67-.02 4.82-.02 5.48 0 .53.36 1.15 1.37.96C38.28 40.32 44 32.84 44 24 44 12.95 35.05 4 24 4z"/>
+    </svg>
   </a>
 </div>
 
-<div class="container">
+<div class="page">
 
-<div class="profile-pic">
-  <img src="me.jpg" alt="Profile Picture">
+  <!-- HERO -->
+  <div class="hero" id="hero">
+    <div class="avatar-ring">
+      <img src="me.jpg" alt="Muhammad Mussa Kazim">
+    </div>
+    <h1>Muhammad Mussa Kazim</h1>
+    <div class="hero-tags">
+      <span>AI</span>
+      <span>Machine Learning</span>
+      <span>Computer Engineering</span>
+    </div>
+    <div class="hero-contact">
+      <a href="mailto:mmussakazim@gmail.com">
+        mmussakazim@gmail.com
+      </a>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6.07 6.07l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +92 309 5364941
+      </span>
+    </div>
+  </div>
+
+  <!-- MAIN CARD -->
+  <div class="main">
+
+    <!-- ABOUT -->
+    <div class="section reveal">
+      <div class="section-label">
+        <div class="section-dot"></div>
+        <h2>About</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="about-text">
+        Computer Engineering student with strong coding skills and a solid foundation in Machine Learning, Deep Learning, and Image &amp; Signal Processing. Passionate about leveraging AI to solve real-world challenges and contribute to impactful research and development.
+      </p>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section reveal">
+      <div class="section-label">
+        <div class="section-dot"></div>
+        <h2>Education</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="edu-card">
+        <div>
+          <div class="degree">B.E. Computer Engineering</div>
+          <div class="school">National University of Sciences and Technology (NUST)</div>
+        </div>
+        <div class="edu-meta">
+          <div class="year">2022 – Present</div>
+          <div class="cgpa-badge">CGPA 3.97 / 4.00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section reveal">
+      <div class="section-label">
+        <div class="section-dot"></div>
+        <h2>Research &amp; Experience</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="exp-list reveal-stagger">
+        <div class="exp-item">
+          <div class="exp-title">Mitacs Globalink Research Intern (GRI '26)</div>
+          <div class="exp-org">York University, Canada</div>
+          <div class="exp-desc">Selected as a Mitacs Globalink Research Intern under Professor Ping Wang, conducting research on "Incorporating AI for Next Generation Communication Networks." Selected through a highly competitive international research program.</div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">Research Intern</div>
+          <div class="exp-org">NUST × Ulster University (UK)</div>
+          <div class="exp-desc">Conducted research on symbol detection for MIMO systems using AI-based techniques. Writing a paper titled "A Data-Driven Approach to Pilot-Free MIMO Detection Using Transformer-Based Architecture" targeted for conferences.</div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">Machine Learning Intern</div>
+          <div class="exp-org">RISETech</div>
+          <div class="exp-desc">Worked on computer vision projects involving YOLO and RT-DETR models for object detection and image analysis. Explored self-supervised learning techniques with autoencoders and gained hands-on experience with CNN and transformer-based classification approaches.</div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">Research Intern — ML &amp; Quantum Computing</div>
+          <div class="exp-org">CETQAP</div>
+          <div class="exp-desc">Reviewed research papers on the intersection of machine learning and quantum computing, culminating in a review paper titled "The Role of Quantum Computing in Accelerating Machine Learning Algorithms."</div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">Research Intern — Hardware Security</div>
+          <div class="exp-org">WISE Lab NUST</div>
+          <div class="exp-desc">Worked on various logic locking techniques and attacks, with a focus on analyzing machine learning based attacks such as GNNUnlock.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section reveal">
+      <div class="section-label">
+        <div class="section-dot"></div>
+        <h2>Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid reveal-stagger">
+        <div class="project-card wide">
+          <div class="p-title">NeuroMind (FYP)</div>
+          <div class="p-desc">Developing a solution to classify Dravet Syndrome using EEG data and machine learning techniques to support accurate and early diagnosis. The project recommends effective treatments through a RAG-based model and incorporates Autoencoder-based models for improving interpretability of predictions, enabling patient tracking over time for continuous, personalized care.</div>
+        </div>
+        <div class="project-card">
+          <div class="p-title">Self-Driving Vision System</div>
+          <div class="p-desc">Real-time self-driving solution on Raspberry Pi using classical image processing — lane detection, obstacle-based stop/move decisions, and directional control.</div>
+        </div>
+        <div class="project-card">
+          <div class="p-title">Audio Classification Model</div>
+          <div class="p-desc">Preprocessed audio signals in MATLAB, extracted spectrograms and MFCCs to classify noise, speech, and music. Neural network achieved 94% accuracy.</div>
+        </div>
+        <div class="project-card">
+          <div class="p-title">Other Projects</div>
+          <div class="p-desc">Face Detection Lock System (ESP32-CAM) · Mini Search Engine · Airport Simulation System (Java) · Middle-School Database System</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section reveal">
+      <div class="section-label">
+        <div class="section-dot"></div>
+        <h2>Skills</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid reveal-stagger">
+        <div class="skill-group">
+          <div class="skill-group-label">Languages</div>
+          <div class="skill-chips">
+            <span class="chip">Python</span><span class="chip">Java</span><span class="chip">C++</span><span class="chip">MATLAB</span><span class="chip">Verilog</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">AI / ML</div>
+          <div class="skill-chips">
+            <span class="chip">TensorFlow</span><span class="chip">PyTorch</span><span class="chip">Keras</span><span class="chip">scikit-learn</span><span class="chip">YOLO</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Domains</div>
+          <div class="skill-chips">
+            <span class="chip">Computer Vision</span><span class="chip">Signal Processing</span><span class="chip">NLP</span><span class="chip">MIMO Systems</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Soft Skills</div>
+          <div class="skill-chips">
+            <span class="chip">Problem-solving</span><span class="chip">Teamwork</span><span class="chip">Adaptability</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="section reveal">
+      <div class="section-label">
+        <div class="section-dot"></div>
+        <h2>Certifications</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="cert-grid reveal-stagger">
+
+        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/specialization/certificate/S0SWPMDX582I" target="_blank" rel="noopener">
+          <div>
+            <div class="cert-name">Machine Learning Specialization</div>
+            <div class="cert-issuer">Stanford &amp; DeepLearning.AI · Coursera</div>
+          </div>
+          <div class="cert-arrow">View credential <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </a>
+
+        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/certificate/ZAR83NPTNMTE" target="_blank" rel="noopener">
+          <div>
+            <div class="cert-name">Data Science Methodology</div>
+            <div class="cert-issuer">IBM · Coursera</div>
+          </div>
+          <div class="cert-arrow">View credential <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </a>
+
+        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/certificate/H6A3VYDYGZ2Y" target="_blank" rel="noopener">
+          <div>
+            <div class="cert-name">Crash Course on Python</div>
+            <div class="cert-issuer">Google · Coursera</div>
+          </div>
+          <div class="cert-arrow">View credential <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- LEADERSHIP + ADDITIONAL -->
+    <div class="two-col reveal">
+      <div class="list-card">
+        <h3>Leadership &amp; Activities</h3>
+        <p>Summer School Instructor Assistant (NUST)</p>
+        <p>Co-Organizer, SAT-101 Workshop (NUST)</p>
+        <p>Deputy Director Media &amp; Graphics (COMPPEC)</p>
+        <p>Deputy Director Content Writer (NUST Volunteers Club)</p>
+      </div>
+      <div class="list-card">
+        <h3>Additional</h3>
+        <p><strong style="color:var(--text);font-weight:600;">Languages:</strong> Urdu (Native) · English (Fluent)</p>
+        <p style="margin-top:8px;"><strong style="color:var(--text);font-weight:600;">Interests:</strong> YouTube Content Creation · Football · Cricket · History</p>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<h1>MUHAMMAD MUSSA KAZIM</h1>
-<div class="subtitle">• AI • MACHINE LEARNING • COMPUTER ENGINEERING</div>
+<script>
+  /* ── Hero compact/expand on scroll ── */
+  const hero = document.getElementById('hero');
 
-<div class="contact">
-<p>mmussakazim@gmail.com</p> <p>+92 309 5364941</p>
-</div>
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      hero.classList.add('compact');
+    } else {
+      hero.classList.remove('compact');
+    }
+  }, { passive: true });
 
-<!-- ABOUT -->
-<div class="section">
-<h2>About Me</h2>
-<p>
-Computer Engineering student with strong coding skills and a solid foundation in Machine Learning, Deep Learning, and Image & Signal Processing. Passionate about leveraging AI to solve real-world challenges and contribute to impactful research and development.
-</p>
-</div>
+  /* ── Scroll-reveal: show on enter, hide when scrolling back up ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        // Only un-reveal when element exits from the top (scrolling up)
+        if (entry.boundingClientRect.top > 0) {
+          entry.target.classList.remove('visible');
+        }
+      }
+    });
+  }, { threshold: 0.01, rootMargin: '0px 0px -30px 0px' });
 
-<!-- EDUCATION -->
-<div class="section">
-<h2>Education</h2>
-<div class="item">
-<div class="item-title">B.E Computer Engineering</div>
-<div class="item-sub">National University of Sciences and Technology (NUST)</div>
-<div class="item-desc"> <p>2022 – Present</p> <p>CGPA: 3.97 / 4.00</p></div>
-</div>
-</div>
-
-<!-- EXPERIENCE -->
-<div class="section">
-<h2>Research & Experience</h2>
-
-<div class="item">
-<div class="item-title">Mitacs Globalink Research Intern (GRI '26)</div>
-<div class="item-sub">York University, Canada</div>
-<div class="item-desc">Selected as a Mitacs Globalink Research Intern at York University, Canada, under Professor Ping Wang. Conducting research on “Incorporating AI for Next Generation Communication Networks”. Selected through a highly competitive international research program.</div>
-</div>
-
-<div class="item">
-<div class="item-title">Research Intern</div>
-<div class="item-sub">NUST × Ulster University (UK)</div>
-<div class="item-desc">Conducted research on symbol detection for MIMO systems using AI-based techniques. Writing a paper titled “A Data-Driven Approach to Pilot-Free MIMO Detection Using Transformer-Based Architecture” targeted for conferences.</div>
-</div>
-
-<div class="item">
-<div class="item-title">Machine Learning Intern</div>
-<div class="item-sub">RISETech</div>
-<div class="item-desc">Worked on computer vision projects involving YOLO and RT-DETR models for object detection and image analysis. Explored self-supervised learning techniques with autoencoders and gained hands-on experience with CNN and transformer-based classification approaches.</div>
-</div>
-
-<div class="item">
-<div class="item-title">Research Intern — ML & Quantum Computing</div>
-<div class="item-sub">CETQAP</div>
-<div class="item-desc">Reviewed research papers on the intersection of machine learning and quantum computing, culminating in a review paper titled “The Role of Quantum Computing in Accelerating Machine Learning Algorithms.” </div>
-</div>
-
-<div class="item">
-<div class="item-title">Research Intern — Hardware Security</div>
-<div class="item-sub">WISE Lab NUST</div>
-<div class="item-desc">Worked on various logic locking techniques and attacks, with a focus on analyzing machine learning based attacks such as GNNUnlock. </div>
-</div>
-
-</div>
-
-<!-- PROJECTS -->
-<div class="section">
-<h2>Projects</h2>
-
-<div class="item">
-<div class="item-title">NeuroMind (FYP)</div>
-<div class="item-desc">Developing a solution to classify Dravet Syndrome using EEG data and machine learning techniques to support accurate and early diagnosis. The project also aims to recommend the most effective treatment based on past researches through a RAG-based model. We are also incorporating Autoencoder based models for improving interpretability of predictions, and enabling patient tracking over time to support continuous and personalized care.</div>
-</div>
-
-<div class="item">
-<div class="item-title">Self-Driving Vision System</div>
-<div class="item-desc">Developed a real-time self-driving solution on Raspberry Pi using classical image processing techniques with lane detection, obstacle-based stop/move decisions, and directional control.</div>
-</div>
-
-<div class="item">
-<div class="item-title">Audio Classification Model</div>
-<div class="item-desc">Preprocessed audio signals in MATLAB and extracted spectrograms and MFCCs to classify noise, speech, and music. Designed and trained a neural network achieving 94% accuracy in audio classification.</div>
-</div>
-
-<div class="item">
-<div class="item-title">Other Projects</div>
-<div class="item-desc">
-  <p>Face Detection Lock System (ESP32-CAM)</p>
-  <p>Mini Search Engine</p>
-  <p>Airport Simulation System (Java)</p>
-  <p>Middle-School Database System</p>
-</div>
-</div>
-
-</div>
-
-<!-- SKILLS -->
-<div class="section">
-<h2>Skills</h2>
-<p>
-<strong>Languages:</strong> Python, Java, C++, MATLAB, Verilog<br>
-<strong>AI/ML:</strong> TensorFlow, PyTorch, Keras, scikit-learn, YOLO<br>
-<strong>Domains:</strong> Computer Vision, Signal Processing, NLP, MIMO Systems<br>
-<strong>Soft Skills:</strong> Problem-solving, teamwork, adaptability
-</p>
-</div>
-
-<!-- CERTIFICATIONS -->
-<div class="section">
-<h2>Certifications</h2>
-<p>Machine Learning Specialization (Stanford & DeepLearning.AI)</p>
-<p>Data Science Methodology (IBM)</p>
-<p>Crash Course on Python (Google)</p>
-</div>
-
-<!-- LEADERSHIP -->
-<div class="section">
-<h2>Leadership & Activities</h2>
-<p>Summer School Instructor Assistant (NUST) </p> 
-<p>Co-Organizer SAT-101 Workshop (NUST)</p>
-<p>Deputy Director Media & Graphics (COMPPEC)</p> 
-<p>Deputy Director Content Writer (NUST Volunteers Club)</p>
-</div>
-
-<!-- EXTRA -->
-<div class="section">
-<h2>Additional Information</h2>
-<p>
-<strong>Languages:</strong> Urdu (Native), English (Fluent)<br>
-<strong>Interests:</strong> YouTube Content Creation, Football, Cricket, History
-</p>
-</div>
-
-</div>
-
+  document.querySelectorAll('.reveal, .main, .reveal-stagger').forEach(el => {
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
