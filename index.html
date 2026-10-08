@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Muhammad Mussa Kazim</title>
+<meta name="description" content="Muhammad Mussa Kazim — Computer Engineer, NUST President's Gold Medalist and Mitacs Globalink Research Intern working on AI and machine learning.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -443,6 +444,70 @@ body::before {
 
 .list-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; }
 
+
+/* ── GOLD ACCENTS ── */
+:root { --gold:#b8860b; --gold-dark:#7a5200; --gold-bg:#fff4d6; --gold-border:rgba(184,134,11,0.45); }
+
+.hero-tags span.gold {
+  color:#f5c451; background:rgba(245,196,81,0.12); border-color:rgba(245,196,81,0.45);
+}
+
+.gold-badge {
+  display:inline-block;
+  background:linear-gradient(135deg,#f6d365,#e0a82e);
+  color:#4a3200;
+  font-size:0.78rem;
+  font-weight:700;
+  padding:4px 12px;
+  border-radius:100px;
+  box-shadow:0 2px 8px rgba(224,168,46,0.35);
+}
+
+.edu-meta .badges { display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap; }
+.edu-courses { font-size:0.8rem; color:var(--muted); line-height:1.55; margin-top:10px; max-width:520px; }
+.edu-courses b { color:var(--text); font-weight:600; }
+
+.highlights { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:22px; }
+.hl {
+  background:var(--gold-bg); border:1px solid var(--gold-border); border-radius:12px;
+  padding:12px 14px; text-align:center;
+}
+.hl .hl-main { font-family:'DM Serif Display',serif; font-size:1.15rem; color:var(--gold-dark); line-height:1.2; }
+.hl .hl-sub  { font-size:0.7rem; letter-spacing:0.8px; text-transform:uppercase; color:var(--muted); margin-top:3px; font-weight:600; }
+
+.exp-date { color:var(--muted); font-weight:400; font-size:0.78rem; margin-left:6px; }
+.exp-date::before { content:'· '; }
+.exp-item.featured::before { background:var(--gold); box-shadow:0 0 0 2px var(--gold); }
+.exp-title.hl-title {
+  display:inline-block; background:#fff0c2; color:var(--gold-dark);
+  padding:2px 10px; border-radius:6px; margin-bottom:4px;
+}
+
+.project-card .p-title { flex-wrap:wrap; }
+.p-badge {
+  font-size:0.7rem; font-weight:700; color:var(--gold-dark); background:#fff0c2;
+  border:1px solid var(--gold-border); padding:2px 9px; border-radius:100px;
+}
+.p-metric { color:var(--text); font-weight:600; }
+
+.pub-list { display:flex; flex-direction:column; gap:10px; }
+.pub-item { background:var(--light); border-radius:12px; padding:16px 20px; border-left:3px solid var(--blue); }
+.pub-title { font-weight:600; font-size:0.92rem; color:var(--text); line-height:1.45; }
+.pub-authors { font-size:0.8rem; color:var(--muted); margin-top:4px; line-height:1.55; }
+.pub-authors b { color:var(--text); font-weight:600; }
+.pub-meta { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:8px; font-size:0.8rem; color:var(--blue); font-weight:500; }
+.pub-meta a { color:var(--blue); text-decoration:none; border-bottom:1px dotted var(--blue); }
+.pub-meta a:hover { border-bottom-style:solid; }
+.pub-status { font-size:0.68rem; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:2px 9px; border-radius:100px; }
+.pub-status.published { color:#166534; background:#dcfce7; }
+.pub-status.review    { color:#92400e; background:#fef3c7; }
+.pub-status.writing   { color:#475569; background:#e2e8f0; }
+
+@media(max-width: 680px) {
+  .highlights { grid-template-columns:repeat(2,1fr); }
+  .edu-meta .badges { justify-content:flex-start; }
+}
+
 /* MOBILE */
 @media(max-width: 680px) {
   .main { padding: 36px 22px; }
@@ -523,6 +588,7 @@ body::before {
       <span>AI</span>
       <span>Machine Learning</span>
       <span>Computer Engineering</span>
+      <span class="gold">President's Gold Medal</span>
     </div>
     <div class="hero-contact">
       <a href="mailto:mmussakazim@gmail.com">
@@ -546,8 +612,14 @@ body::before {
         <div class="section-line"></div>
       </div>
       <p class="about-text">
-        Computer Engineering student with strong coding skills and a solid foundation in Machine Learning, Deep Learning, and Image &amp; Signal Processing. Passionate about leveraging AI to solve real-world challenges and contribute to impactful research and development.
+        Computer Engineering graduate with strong coding skills and a solid foundation in Machine Learning, Deep Learning, and Image &amp; Signal Processing. Worked on research with <strong style="color:var(--text);">Mitacs Globalink</strong> at York University (Canada), collaborated with researchers from Ulster University (UK), and gained national research and industry experience in Pakistan. Passionate about leveraging AI to solve real-world challenges and contribute to impactful research and development.
       </p>
+      <div class="highlights">
+        <div class="hl"><div class="hl-main">3.97 / 4.00</div><div class="hl-sub">CGPA</div></div>
+        <div class="hl"><div class="hl-main">Gold Medal</div><div class="hl-sub">President's · NUST</div></div>
+        <div class="hl"><div class="hl-main">Mitacs GRI '26</div><div class="hl-sub">York University</div></div>
+        <div class="hl"><div class="hl-main">1st Runner-Up</div><div class="hl-sub">COMPPEC 2026</div></div>
+      </div>
     </div>
 
     <!-- EDUCATION -->
@@ -561,10 +633,14 @@ body::before {
         <div>
           <div class="degree">B.E. Computer Engineering</div>
           <div class="school">National University of Sciences and Technology (NUST)</div>
+          <div class="edu-courses"><b>Coursework:</b> Machine Learning, Digital Signal Processing, Digital Image Processing, Computer Vision, Signals and Systems, AI and Decision Support Systems</div>
         </div>
         <div class="edu-meta">
-          <div class="year">2022 – Present</div>
-          <div class="cgpa-badge">CGPA 3.97 / 4.00</div>
+          <div class="year">2022 – 2026</div>
+          <div class="badges">
+            <div class="cgpa-badge">CGPA 3.97 / 4.00</div>
+            <div class="gold-badge">President's Gold Medal</div>
+          </div>
         </div>
       </div>
     </div>
@@ -577,29 +653,29 @@ body::before {
         <div class="section-line"></div>
       </div>
       <div class="exp-list reveal-stagger">
-        <div class="exp-item">
-          <div class="exp-title">Mitacs Globalink Research Intern (GRI '26)</div>
-          <div class="exp-org">York University, Canada</div>
-          <div class="exp-desc">Selected as a Mitacs Globalink Research Intern under Professor Ping Wang, conducting research on "Incorporating AI for Next Generation Communication Networks." Selected through a highly competitive international research program.</div>
+        <div class="exp-item featured">
+          <div class="exp-title hl-title">Mitacs Globalink Research Intern</div>
+          <div class="exp-org">York University, Canada <span class="exp-date">Aug 2026 – Oct 2026</span></div>
+          <div class="exp-desc">Selected through the highly competitive Mitacs Globalink Research Internship to work under Professor Ping Wang on <em>“Incorporating AI in Next Generation Communication Networks.”</em> Working on learning-preserving semantic communication — transmitting task-relevant meaning rather than raw data to improve efficiency and robustness in next-generation networks.</div>
         </div>
         <div class="exp-item">
           <div class="exp-title">Research Intern</div>
-          <div class="exp-org">NUST × Ulster University (UK)</div>
-          <div class="exp-desc">Conducted research on symbol detection for MIMO systems using AI-based techniques. Writing a paper titled "A Data-Driven Approach to Pilot-Free MIMO Detection Using Transformer-Based Architecture" targeted for conferences.</div>
+          <div class="exp-org">NUST × Ulster University (UK) <span class="exp-date">Aug 2025 – Sep 2025</span></div>
+          <div class="exp-desc">Conducted research on AI-based symbol detection for MIMO systems, evaluating Transformers, CNNs, and LSTMs for 6G communication. The resulting paper, <em>“A Data-Driven Transformer Approach to MIMO Symbol Detection,”</em> is under review at <em>Physical Communication</em>.</div>
         </div>
         <div class="exp-item">
           <div class="exp-title">Machine Learning Intern</div>
-          <div class="exp-org">RISETech</div>
+          <div class="exp-org">RISETech <span class="exp-date">Jun 2025 – Aug 2025</span></div>
           <div class="exp-desc">Worked on computer vision projects involving YOLO and RT-DETR models for object detection and image analysis. Explored self-supervised learning techniques with autoencoders and gained hands-on experience with CNN and transformer-based classification approaches.</div>
         </div>
         <div class="exp-item">
           <div class="exp-title">Research Intern — ML &amp; Quantum Computing</div>
-          <div class="exp-org">CETQAP</div>
-          <div class="exp-desc">Reviewed research papers on the intersection of machine learning and quantum computing, culminating in a review paper titled "The Role of Quantum Computing in Accelerating Machine Learning Algorithms."</div>
+          <div class="exp-org">CETQAP <span class="exp-date">Jul 2024 – Aug 2024</span></div>
+          <div class="exp-desc">Reviewed research papers on the intersection of machine learning and quantum computing, culminating in a review paper titled “The Role of Quantum Computing in Accelerating Machine Learning Algorithms.”</div>
         </div>
         <div class="exp-item">
           <div class="exp-title">Research Intern — Hardware Security</div>
-          <div class="exp-org">WISE Lab NUST</div>
+          <div class="exp-org">WISE Lab NUST <span class="exp-date">Jun 2024 – Aug 2024</span></div>
           <div class="exp-desc">Worked on various logic locking techniques and attacks, with a focus on analyzing machine learning based attacks such as GNNUnlock.</div>
         </div>
       </div>
@@ -614,8 +690,12 @@ body::before {
       </div>
       <div class="projects-grid reveal-stagger">
         <div class="project-card wide">
-          <div class="p-title">NeuroMind (FYP)</div>
-          <div class="p-desc">Developing a solution to classify Dravet Syndrome using EEG data and machine learning techniques to support accurate and early diagnosis. The project recommends effective treatments through a RAG-based model and incorporates Autoencoder-based models for improving interpretability of predictions, enabling patient tracking over time for continuous, personalized care.</div>
+          <div class="p-title">NeuroMind (Final Year Project) <span class="p-badge">1st Runner-Up · COMPPEC 2026</span></div>
+          <div class="p-desc">AI-driven framework for Dravet Syndrome diagnosis from EEG data, achieving <span class="p-metric">over 90% accuracy and recall</span> for early and reliable detection. A RAG-based model recommends treatment strategies from existing medical literature, while an autoencoder-based anomaly detection model with <span class="p-metric">97% recall</span> reduces manual EEG inspection time for clinicians.</div>
+        </div>
+        <div class="project-card">
+          <div class="p-title">Brain Tumor Classification</div>
+          <div class="p-desc">Compared pretrained Vision Transformers and CNNs (ResNet, DenseNet, EfficientNet) on MRI scans. An ensemble with frozen encoder layers reached a peak accuracy of <span class="p-metric">92%</span>.</div>
         </div>
         <div class="project-card">
           <div class="p-title">Self-Driving Vision System</div>
@@ -627,7 +707,33 @@ body::before {
         </div>
         <div class="project-card">
           <div class="p-title">Other Projects</div>
-          <div class="p-desc">Face Detection Lock System (ESP32-CAM) · Mini Search Engine · Airport Simulation System (Java) · Middle-School Database System</div>
+          <div class="p-desc">Face Detection Lock System (ESP32-CAM) · Local Search Engine (Data Structures &amp; Algorithms) · Airport Simulation System (Java) · Middle-School Database System</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PUBLICATIONS -->
+    <div class="section reveal">
+      <div class="section-label">
+        <div class="section-dot"></div>
+        <h2>Publications</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="pub-list reveal-stagger">
+        <div class="pub-item">
+          <div class="pub-title">Channel State Information–Based Object Detection: Techniques, Performance Trade-Offs, and Open Challenges</div>
+          <div class="pub-authors">A. Batool, N. A. Kharal, <b>M. M. Kazim</b>, B. B. Aamir, N. Saeed, K. Khurshid</div>
+          <div class="pub-meta"><span class="pub-status published">Published</span><span><em>Physical Communication</em>, vol. 77, Art. 103154, May 2026</span><a href="https://doi.org/10.1016/j.phycom.2026.103154" target="_blank" rel="noopener">DOI ↗</a></div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title">A Data-Driven Transformer Approach to MIMO Symbol Detection</div>
+          <div class="pub-authors"><b>M. M. Kazim</b>, B. B. Aamir, N. A. Kharal, A. Batool, M. U. Hadi, K. Khurshid</div>
+          <div class="pub-meta"><span class="pub-status review">Under Review</span><span><em>Physical Communication</em></span></div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title">Enhancing White Blood Cell Classification Using Convolutional Autoencoder-Based Feature Learning</div>
+          <div class="pub-authors"><b>M. M. Kazim</b>, B. B. Aamir, M. U. Akram</div>
+          <div class="pub-meta"><span class="pub-status writing">In Preparation</span></div>
         </div>
       </div>
     </div>
